@@ -113,6 +113,8 @@ namespace chainbase {
                                                        ) );
          _segment->find_or_construct< environment_check >( "environment" )();
 
+      }
+
 #ifndef _WIN32
          int r = mlock( _segment->get_address(), _segment->get_size() );
          if (r != 0 ) {
@@ -124,7 +126,6 @@ namespace chainbase {
                       << " MB) in RAM. Performance degradation is possible." << std::endl;
          }
 #endif
-      }
 
 
       abs_path = bfs::absolute( dir / "shared_memory.meta" );
